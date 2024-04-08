@@ -55,6 +55,13 @@ const Index = () => {
       <Heading as="h1" size="2xl" textAlign="center" mb={8}>
         Roulette Betting Strategist
       </Heading>
+      
+      <img 
+        src="https://svgshare.com/i/tKw.svg"
+        alt="Roulette Wheel"
+        width="400px"
+        style={{margin: "0 auto"}}
+      />
 
       <VStack spacing={8} align="stretch">
         <HStack spacing={4}>
