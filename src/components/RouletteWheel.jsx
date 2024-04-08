@@ -1,8 +1,13 @@
 import React from "react";
+import { useColorMode } from "@chakra-ui/react";
 
 const RouletteWheel = () => {
+  const { colorMode } = useColorMode();
+  const isDarkMode = colorMode === "dark";
+
   return (
     <svg width="400" height="400" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g filter={isDarkMode ? "url(#darkFilter)" : undefined}>
       <g id="Component 12 – 1">
         <g id="Ellipse 1" filter="url(#filter0_d_1_2)">
           <circle cx="200" cy="200" r="190" fill="#D9D9D9" />
@@ -95,7 +100,15 @@ const RouletteWheel = () => {
           <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_2" />
           <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_2" result="shape" />
         </filter>
+      </g>
+      <defs>
+        {}
+        <filter id="darkFilter">
+          <feColorMatrix type="matrix" values="0.25 0 0 0 0.75  0 0.25 0 0 0.75  0 0 0.25 0 0.75  0 0 0 1 0"/>
+        </filter>
       </defs>
+    </defs>
+    </g>
     </svg>
   );
 };

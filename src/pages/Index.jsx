@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Box, Heading, Text, VStack, HStack, Button, Select, NumberInput, NumberInputField, NumberInputStepper, NumberIncrementStepper, NumberDecrementStepper, Table, Thead, Tbody, Tr, Th, Td, TableContainer } from "@chakra-ui/react";
+import { Box, Heading, Text, VStack, HStack, Button, Select, NumberInput, NumberInputField, NumberInputStepper, NumberIncrementStepper, NumberDecrementStepper, Table, Thead, Tbody, Tr, Th, Td, TableContainer, useColorMode } from "@chakra-ui/react";
 import { FaSpinner } from "react-icons/fa";
 
 const STRATEGIES = [
@@ -14,6 +14,8 @@ const Index = () => {
   const [rounds, setRounds] = useState(10);
   const [isCalculating, setIsCalculating] = useState(false);
   const [results, setResults] = useState([]);
+  const { colorMode, toggleColorMode } = useColorMode();
+  const isDarkMode = colorMode === "dark";
 
   const calculateStrategy = () => {
     setIsCalculating(true);
@@ -55,16 +57,12 @@ const Index = () => {
       <Heading as="h1" size="2xl" textAlign="center" mb={8}>
         Roulette Betting Strategist
       </Heading>
-      
-      <img 
-        src="https://svgshare.com/i/tKw.svg"
-        alt="Roulette Wheel"
-        width="400px"
-        style={{margin: "0 auto"}}
-      />
+
+      <img src="https://svgshare.com/i/tKw.svg" alt="Roulette Wheel" width="400px" style={{ margin: "0 auto" }} />
 
       <VStack spacing={8} align="stretch">
         <HStack spacing={4}>
+          <Button onClick={toggleColorMode}>Toggle {isDarkMode ? "Light" : "Dark"} Mode</Button>
           <Select value={strategy} onChange={(e) => setStrategy(e.target.value)}>
             {STRATEGIES.map((s) => (
               <option key={s.id} value={s.id}>
